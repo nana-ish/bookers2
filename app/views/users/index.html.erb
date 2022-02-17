@@ -1,8 +1,5 @@
-
 <%= render 'user', user: @user,book:@book%>
-
 <div class="col-md-8 offset-md-1">
-
   <h2>Users</h2>
   <!-- 開始_ユーザーの情報一覧 -->
   <table class='table'>
@@ -11,7 +8,6 @@
       <th> name  </th>
       <th colspan="1"></th>
     </tr>
-
    <% @users.each do |user| %>
    <tr>
       <td><%= image_tag user.get_profile_image(40,40) %></td>
@@ -20,6 +16,5 @@
    </tr>
    <% end %>
   </table>
-
 </div>
 <!-- 終了_ユーザーの情報一覧 -->
