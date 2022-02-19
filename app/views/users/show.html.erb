@@ -1,5 +1,4 @@
-<!-- 開始_ユーザーの情報一覧  user indexではcurrnt userを表示-->
-
+<!-- 開始_ユーザーの情報一覧 -->
 <table class='table'>
     <tr>
       <%= image_tag @user.get_profile_image(100,100) %>
@@ -32,21 +31,20 @@
   <% end %>
 
 
-
-<h1>Books</h1>
-<table>
+<!-- 開始_ユーザーの情報一覧 -->
+<table class='table'>
   <tr>
     <th colspan="1"></th>
-    <th>Title</th>
-    <th>Opinion</th>
+    <th>　Title　</th>
+    <th> Opinion </th>
   </tr>
 
  <% @books.each do |book| %>
-    <tr>
-      <td><%= image_tag book.user.get_profile_image(100,100) %></td>
-    	<td><%= link_to book.title ,book_path(book)%> </td>
-    	<td><%= book.body %>  </td>
-
-    </tr>
-  <% end %>
-
+  <tr>
+    <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+  	<td><%= link_to book.title,book_path(book)%></td>
+  	<td><%= book.body %> </td>
+  </tr>
+ <% end %>
+</table>
+<!-- 終了_ユーザーの情報一覧 -->
