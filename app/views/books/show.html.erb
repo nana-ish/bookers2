@@ -1,50 +1,24 @@
-<table class='table'>
+
+<%= render 'users/user', user: @user,book: @book %>
+
+<div class="col-md-8 offset-md-1">
+  <h1>Book detail </h1>
+
+  <table class="table">
     <tr>
-      <%= image_tag @bookdetail.user.get_profile_image(100,100) %>
-    </tr>
-    <tr>
-  	  <th>name</th>
-  	  <th><%=@bookdetail.user.name %></th>
-    </tr>
-    <tr>
-  	  <th>introduction</th>
-  	  <th><%= @bookdetail.user.introduction %></th>
-    </tr>
-    <tr>
-      <th>
-      <%= link_to "編集", edit_user_path(@bookdetail.user.id) %>
-      </th>
-    </tr>
-</table>
-<!-- 終了_ユーザーの情報一覧 -->
+      <td>
+           <%= image_tag @bookdetail.user.get_profile_image(40,40) %>
+          </br><%= link_to @bookdetail.user.name ,user_path(@user) %>
+      </td>
+      <td><%= @bookdetail.title %></td>
+      <td><%= @bookdetail.body %></td>
+
+    <% if @bookdetail.user_id == current_user.id %>
+      <td><%= link_to "Edit",edit_book_path(@bookdetail) %></td>
+      <td><%= link_to "Destroy", book_path(@bookdetail), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
+    <% end %>
+   </tr>
 
 
-<h1>New book </h1>
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %></br>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-
-
-
-<h1>Book detail </h1>
-  <% if @bookdetail.user.profile_image.attached? %>
-   <th><a><%= image_tag @bookdetail.user.get_profile_image(100,100) %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %><a>
-  <% end %>
-    <a><%= @bookdetail.user.name %></a>
-    </th>
-    <th><%= @bookdetail.title %></th>
-    <th><%= @bookdetail.body %></th>
-
-  <% if @bookdetail.user_id == current_user.id %>
-    <th><%= link_to "Edit",edit_book_path(@bookdetail) %></th>
-    <th><%= link_to "Destroy", book_path(@bookdetail), method: :delete, data: {confirm: "本当に消しますか？"} %></th>
-  <% end %>
-
-
-
+  <table>
+</div>

@@ -1,40 +1,9 @@
-<!-- 開始_ユーザーの情報一覧  user indexではcurrnt userを表示-->
 
+<%= render 'users/user', user: @user,book: @book %>
+
+<div class="col-md-8 offset-md-1">
+<h2>Books</h2>
 <table class='table'>
-    <tr>
-      <%= image_tag @user.get_profile_image(100,100) %>
-    </tr>
-    <tr>
-  	  <th>name</th>
-  	  <th><%= @user.name %></th>
-    </tr
-    <tr>
-  	  <th>introduction</th>
-  	  <th><%= @user.introduction %></th>
-    </tr>
-    <tr>
-      <th>
-      <%= link_to "編集", edit_user_path(@user.id) %>
-      </th>
-    </tr>
-</table>
-<!-- 終了_ユーザーの情報一覧 -->
-
-<!--<ここで新しい本の投稿を行う>-->
-<h1>New book</h1>
-
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %></br>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-
-
-
-<h1>Books</h1>
-<table>
   <tr>
     <th colspan="1"></th>
     <th>Title</th>
@@ -43,10 +12,14 @@
 
  <% @books.each do |book| %>
     <tr>
-      <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+      <td><%= link_to user_path(book) do %>
+      <%= image_tag book.user.get_profile_image(40,40)%>
+      </td>
+      <% end %>
     	<td><%= link_to book.title ,book_path(book)%> </td>
     	<td><%= book.body %>  </td>
-
     </tr>
   <% end %>
+  </table>
+  </div>
 

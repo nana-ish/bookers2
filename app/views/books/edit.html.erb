@@ -1,4 +1,7 @@
-<h2>Editing book</h2>
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+
+<h2>Editing Book</h2>
+
 <!-- 中身が空白だとエラー文が出る。 -->
   <% if @book.errors.any? %>
     <%= @book.errors.count %> errors prohibited this book from being saved:
@@ -9,21 +12,16 @@
     </ul>
   <% end %>
 
-<!-- form_with部分 -->
-<%= form_with model: @book, url: book_path(@book.id), method: :patch, local: true do |f| %>
+  <!-- form_with部分 -->
+  <%= form_with model: @book, url: book_path(@book.id), method: :patch, local: true do |f| %>
+    <p>Title<p>
+    <%= f.text_field :title %>
+    <p>Body<p>
+    <%= f.text_area :body %>
+    <br><%= f.submit 'Update Book' %>
+  <% end %>
 
-<p>Title<p>
-<%= f.text_field :title %>
-
-<p>Body<p>
-<%= f.text_area :body %>
-
-
-<br><%= f.submit 'Update Book' %>
-
-<% end %>
-
- <span><%= link_to "Show",book_path(@book) %></span>
- <span>|<span>
+<span><%= link_to "Show",book_path(@book) %></span>
+<span>|<span>
 <span><%= link_to "Back",books_path %></span>
 

@@ -1,36 +1,8 @@
-<!-- 開始_ユーザーの情報一覧 -->
-<table class='table'>
-    <tr>
-      <%= image_tag @user.get_profile_image(100,100) %>
-    </tr>
-    <tr>
-  	  <th>name</th>
-  	  <th><%= @user.name %></th>
-    </tr
-    <tr>
-  	  <th>introduction</th>
-  	  <th><%= @user.introduction %></th>
-    </tr>
-    <tr>
-      <th>
-      <%= link_to "編集", edit_user_path(@user.id) %>
-      </th>
-    </tr>
-</table>
-<!-- 終了_ユーザーの情報一覧 -->
 
-<!--<ここで新しい本の投稿を行う>-->
-<h1>New book</h1>
+<%= render 'user', user: @user, book: @book %>
 
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %></br>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-
-
+<div class="col-md-8 offset-md-1">
+<h2>Books</h2>
 <!-- 開始_ユーザーの情報一覧 -->
 <table class='table'>
   <tr>
@@ -41,10 +13,14 @@
 
  <% @books.each do |book| %>
   <tr>
-    <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+    <td><%=link_to user_path(book.user) do %>
+      <%= image_tag book.user.get_profile_image(40,40) %>
+      <% end %>
+    </td>
   	<td><%= link_to book.title,book_path(book)%></td>
   	<td><%= book.body %> </td>
   </tr>
  <% end %>
 </table>
 <!-- 終了_ユーザーの情報一覧 -->
+</div>
