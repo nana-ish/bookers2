@@ -4,8 +4,8 @@
   <table class="table">
     <tr>
       <td>
-           <%= image_tag @bookdetail.user.get_profile_image(40,40) %>
-          </br><%= link_to @bookdetail.user.name ,user_path(@user) %>
+        <%= image_tag @bookdetail.user.get_profile_image(40,40) %>
+        </br><%= link_to @bookdetail.user.name ,user_path(@user) %>
       </td>
       <td><%= @bookdetail.title %></td>
       <td><%= @bookdetail.body %></td>
