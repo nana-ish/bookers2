@@ -9,32 +9,24 @@
       <% end %>
     </ul>
   <% end %>
-
-
-
 <!-- form_with部分 -->
-<%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
-
+  <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
     <div class="form-group">
       <label for="inputName">Name</label></br>
       <%= f.text_field :name,style: "width:100%" %></br>
     </div>
-
     <div class="form-group">
       <label for="inputImage">Image</label></br>
       <%= f.file_field :profile_image %></br>
     </div>
-
     <div class="form-group">
        <label for="inputIntroduction">Introduction</label></br>
       <%= f.text_area :introduction,style: "width:100%"%><br>
     </div>
-
     <div class="form-group">
       <%= f.submit "Update User",class: 'btn btn-secondary'%>
     </div>
     <div class="form-group">
       <%= flash[:notice] %>
     </div>
-
-<% end %>
+  <% end %>
