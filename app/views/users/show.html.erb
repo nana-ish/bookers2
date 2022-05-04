@@ -1,16 +1,13 @@
-
 <%= render 'user', user: @user, book: @book %>
-
 <div class="col-md-8 offset-md-1">
 <h2>Books</h2>
 <!-- 開始_ユーザーの情報一覧 -->
 <table class='table'>
   <tr>
     <th colspan="1"></th>
-    <th>　Title　</th>
+    <th>Title</th>
     <th> Opinion </th>
   </tr>
-
  <% @books.each do |book| %>
   <tr>
     <td><%=link_to user_path(book.user) do %>
